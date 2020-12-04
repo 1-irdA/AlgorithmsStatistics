@@ -2,11 +2,6 @@
 	-fx-stroke: #32a852; /* GREEN */
 }
 
-/*
-.delete-button {
-	  -fx-background-radius: 50;
-}
-*/
 .delete-button:hover {
 	-fx-background-color: #fc0303;  /* RED */
 	-fx-text-fill: #fff;            /* WHITE */

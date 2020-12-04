@@ -40,9 +40,9 @@ public class FilesUtils {
      * Save the chart
      * @param chartPane anchor pane of chart
      * @param chartToSave chart to save
-     * @return true if saved
+     * @return saved file
      */
-    public static boolean saveChart(AnchorPane chartPane, 
+    public static File saveChart(AnchorPane chartPane, 
             LineChart<String, Double> chartToSave) {
 
         /* save chart image without see chart on current window */
@@ -68,7 +68,7 @@ public class FilesUtils {
             }
         }
 
-        return true;
+        return file;
     }
 
     /**

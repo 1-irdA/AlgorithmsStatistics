@@ -5,6 +5,7 @@
 package fr._1irda.statistics.controllers;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import fr._1irda.statistics.models.Result;
 import fr._1irda.statistics.models.Stat;
@@ -53,15 +54,15 @@ public class ResultController {
         this.stats = this.clickedResult.getStats();
         Image img = null;
         double totalTime = 0;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         
-        try {
-            img = new Image(this.clickedResult.getImgPath());
-        } catch (Exception e) {
-            img = new Image("../assets/image/noImage.png");
+
+        img = new Image(this.clickedResult.getImgPath());
+        
+        if (img.getWidth() != 0) {
+            chartImg.setImage(img);
         }
-        
-        chartImg.setImage(img);
-        
+      
         for (Stat stat : this.stats) {
             listViewArray.getItems().add("Taille : " + stat.getSize()
             + " - Temps de tri : " + stat.getSortingTime());
@@ -70,7 +71,8 @@ public class ResultController {
         
         textAreaInfos.setText("Nombre de générations : " + this.stats.length 
                 + "\nTemps total de tri : " + totalTime + " secondes"
-                + "\nDate enregistrement : " + this.clickedResult.getCreatedAt());
+                + "\nDate enregistrement : " 
+                + dateFormat.format(this.clickedResult.getCreatedAt()));
     }
     
     /**

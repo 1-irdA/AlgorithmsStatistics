@@ -9,10 +9,10 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import fr._1irda.statistics.models.AllResults;
+import fr._1irda.statistics.models.Chart;
 import fr._1irda.statistics.models.Result;
 import fr._1irda.statistics.models.Stat;
 import fr._1irda.statistics.models.Statistics;
-import fr._1irda.statistics.utils.Chart;
 import fr._1irda.statistics.utils.CheckFields;
 import fr._1irda.statistics.utils.DialogMessage;
 import fr._1irda.statistics.utils.FilesUtils;
@@ -256,7 +256,7 @@ public class StatisticsController {
     @FXML
     private void saveChart(ActionEvent event) {
 
-        if (FilesUtils.saveChart(generalAnchorPane, chart)) {
+        if (FilesUtils.saveChart(generalAnchorPane, chart) != null) {
             DialogMessage.confirmMessage("Sauvegardé avec succés", 
                     "Le graphique a été sauvegardé avec succés.", 
                     "Le graphique a correctement été energistré dans "
@@ -322,7 +322,7 @@ public class StatisticsController {
 
                     /* Add saved result in list view */
                     for (int i = 0; i < this.allResults.getResults().size(); i++) {
-                        listViewMyData.getItems().add("Génération : " + i + " : " 
+                        listViewMyData.getItems().add(i + " : " 
                                 + this.allResults.getResults().get(i).getSaveName());
                     }
                     
@@ -330,6 +330,8 @@ public class StatisticsController {
                     if (listViewMyData.getItems().size() > 0) {
                         listViewMyData.setDisable(false);
                     }
+                    
+                    textFieldSaveName.clear();
 
                     DialogMessage.confirmMessage("Sauvegarde effectuée !", 
                             "Données sauvegardées avec succés", 
@@ -407,6 +409,8 @@ public class StatisticsController {
                 if (listViewMyData.getItems().size() < 1) {
                     listViewMyData.setDisable(true);
                 }
+                
+                textFieldNameToDelete.clear();
 
                 DialogMessage.confirmMessage("Succés", 
                         "Suppression effectuée", 

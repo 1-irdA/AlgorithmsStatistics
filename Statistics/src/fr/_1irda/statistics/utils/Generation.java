@@ -34,7 +34,6 @@ public class Generation {
         randomNumber = random.nextDouble() * MAX_VALUE;
 
         for (int i = 0; i < size; i++) {
-            System.out.println(randomNumber);
             generated[i] = randomNumber;
             randomNumber -= random.nextDouble() * SPACING;
         }

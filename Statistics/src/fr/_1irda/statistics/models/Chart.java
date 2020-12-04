@@ -2,9 +2,8 @@
  * Chart.java                                      2 déc. 2020
  * No copyright, no right
  */
-package fr._1irda.statistics.utils;
+package fr._1irda.statistics.models;
 
-import fr._1irda.statistics.models.Stat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.CategoryAxis;
@@ -37,7 +36,7 @@ public class Chart {
      * @param chart chart to display
      * @param xAxis category axis
      * @param yAxis number axis
-     * @param stats all effectued stats
+     * @param stats all computed statistics
      */
     public Chart(LineChart<String, Double> chart,
             CategoryAxis xAxis, 
@@ -50,8 +49,6 @@ public class Chart {
         this.stats = stats; 
         
         this.lineChart.getData().clear();
-        this.lineChart.setLegendVisible(false);
-        this.lineChart.setCreateSymbols(false);
         this.xAxis.setLabel("Taille des tableaux");
         this.yAxis.setLabel("Temps de tri en secondes");
         
@@ -69,19 +66,21 @@ public class Chart {
         XYChart.Series<String, Double> series = new Series<String, Double>();
         int size;
 
+        /* add x axis ticks */
         for (int i = 0; i < this.stats.length; i++) {
+            
             size = this.stats[i].getSize();
 
             // when one array, add one same size
             if (!xAxisElements.contains(size + "")) {
                 xAxisElements.add(size + "");
             }
-
+            
             series.getData()
             .add(new Data<String, Double>(this.stats[i].getSize() + "", 
                     this.stats[i].getSortingTime()));
         }
-
+        
         xAxis.setCategories(xAxisElements);
 
         lineChart.getData().add(series);

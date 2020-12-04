@@ -60,6 +60,7 @@ public class DialogMessage {
             LineChart<String, Double> toSave) throws MalformedURLException {
         
         File userFile = null;
+        String path = null;
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Choix d'une action");
@@ -81,10 +82,13 @@ public class DialogMessage {
         if (result.get() == takeImg){
             userFile = FilesUtils.takeFile(anchorPane);
         } else if (result.get() == saveImg) {
-            FilesUtils.saveChart(anchorPane, toSave);
-            userFile = FilesUtils.takeFile(anchorPane);
+            userFile = FilesUtils.saveChart(anchorPane, toSave);
         } 
         
-        return userFile.toURI().toURL().toString();
+        if (userFile != null) {
+              path = userFile.toURI().toURL().toString();  
+        }
+        
+        return path; 
     }
 }
