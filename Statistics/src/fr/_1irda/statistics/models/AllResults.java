@@ -28,9 +28,56 @@ public class AllResults {
     /**
      * Add a result
      * @param toAdd result to add
+     * @return true if added
      */
-    public void add(Result toAdd) {
-        this.results.add(toAdd);
+    public boolean add(Result toAdd) {
+        
+        boolean added = true;
+        
+        if (this.isUnique(toAdd.getSaveName())) {
+            this.results.add(toAdd);
+        } else {
+            added = false;
+        }
+        
+        return added;
+    }
+    
+    /**
+     * Determine if a name is not already saved
+     * @param name to check
+     * @return true if not save
+     */
+    public boolean isUnique(String name) {
+        
+        boolean isUnique = true;
+        
+        for (int i = 0; i < this.results.size() && isUnique; i++) {
+            if (this.results.get(i).getSaveName().equals(name)) {
+                isUnique = false;
+            }
+        }
+        
+        return isUnique;
+    }
+    
+    /**
+     * Delete a result
+     * @param toDelete result to delete
+     * @return true if deleted
+     */
+    public boolean delete(String toDelete) {
+        
+        boolean deleted = false;
+        
+        for (int i = 0; i < this.results.size() && !deleted; i++) {
+            if (this.results.get(i).getSaveName().equals(toDelete)) {
+                this.results.remove(i);
+                deleted = true;
+            }
+        }
+        
+        return deleted;
     }
 
     /**

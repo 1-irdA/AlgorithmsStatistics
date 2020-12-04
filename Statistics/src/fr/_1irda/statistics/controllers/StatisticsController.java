@@ -83,7 +83,7 @@ public class StatisticsController {
     /** Button to save chart image */
     @FXML
     private Button btnSaveChart;
-    
+
     /** Button to save in CSV */
     @FXML
     private Button btnSaveCsv;
@@ -91,26 +91,34 @@ public class StatisticsController {
     /** Anchor pane who contains chart */
     @FXML
     private AnchorPane generalAnchorPane;
-    
+
     /** Anchor pane who contains export tab */
     @FXML
     private AnchorPane anchorPaneExport;
-    
+
     /** Text field to set name of result to serialize */
     @FXML
     private TextField textFieldSaveName;
-    
+
     /** Button to save result */
     @FXML
     private Button btnSaveResults;
-    
+
     /** List view with all saved results */
     @FXML
     private ListView<String> listViewMyData;
 
+    /** Text field to input name to delete element */
+    @FXML
+    private TextField textFieldNameToDelete;
+
+    /** Button to delete a saved result */
+    @FXML
+    private Button btnDelete;
+
     /** All statistics */
     private Stat[] allStats;
-    
+
     /** All saved data */
     private AllResults allResults = new AllResults(FilesUtils.deserialize());
 
@@ -119,15 +127,15 @@ public class StatisticsController {
      */
     @FXML
     public void initialize() {
-        
+
         /* Get results in save file */
         ArrayList<Result> res = this.allResults.getResults();
-        
+
         /* Add saved result in list view */
         for (int i = 0; i < res.size(); i++) {
             listViewMyData.getItems().add(i + " : " + res.get(i).getSaveName());
         }
-        
+
         /* Add sorting algorithms */
         comboBoxAlgo.getItems().addAll("Tri par insertion",
                 "Tri à bulles",
@@ -139,6 +147,16 @@ public class StatisticsController {
         /* Add generation algorithm */
         comboBoxGeneration.getItems().addAll("Aléatoire", "Descendante");
         comboBoxGeneration.getSelectionModel().select(0);
+
+        /* If saved result, activate button */
+        if (allResults.getResults().size() > 0) {
+            btnDelete.setDisable(false);
+        }
+
+        /* If saved result active list view */
+        if (listViewMyData.getItems().size() > 0) {
+            listViewMyData.setDisable(false);
+        }
     }
 
     /**
@@ -182,7 +200,7 @@ public class StatisticsController {
 
             listViewDetails.getItems().clear();
             this.allStats = statistics.getStats();
-            
+
             /* active button to save results */
             btnSaveChart.setDisable(false);
             btnSaveCsv.setDisable(false);
@@ -237,27 +255,27 @@ public class StatisticsController {
      */
     @FXML
     private void saveChart(ActionEvent event) {
-        
+
         if (FilesUtils.saveChart(generalAnchorPane, chart)) {
             DialogMessage.confirmMessage("Sauvegardé avec succés", 
                     "Le graphique a été sauvegardé avec succés.", 
                     "Le graphique a correctement été energistré dans "
-                    + "le fichier spécifié.");
+                            + "le fichier spécifié.");
         } else {
             DialogMessage.errorMessage("Erreur !", 
                     "Erreur durant la sauvegarde.", 
                     "Une erreur est survenue durant la sauvegarde de votre "
-                    + "image, veuillez ressayer.");
+                            + "image, veuillez ressayer.");
         }
     }
-    
+
     /**
      * Save result in CSV file
      * @param event button click
      */
     @FXML
     private void saveToCsv(ActionEvent event) {
-        
+
         if (FilesUtils.saveInCsv(anchorPaneExport, this.allStats)) {
             DialogMessage.confirmMessage("Sauvegardé avec succés", 
                     "Les résultats ont été sauvegardés avec succés.", 
@@ -266,55 +284,74 @@ public class StatisticsController {
             DialogMessage.errorMessage("Erreur !", 
                     "Erreur durant la sauvegarde.", 
                     "Une erreur est survenue durant la sauvegarde de votre "
-                    + "fichier, veuillez ressayer.");
+                            + "fichier, veuillez ressayer.");
         }
     }
-    
+
     /**
      * Save last generations
      * @param event
      */
     @FXML
     private void saveResults(ActionEvent event) {
-        
+
         String name = null, filePath = null;
         Result result = null;
-        
+
         if (CheckFields.isValid(textFieldSaveName)) {
-            
+
             name = textFieldSaveName.getText().trim();
             try {
                 filePath = DialogMessage.fileMessage(generalAnchorPane, chart);
             } catch (MalformedURLException e) {
                 DialogMessage.errorMessage("Erreur !", 
                         "Erreur durant la sauvegarde.", 
-                        "Impossible de sauvegarder le résultat, "
-                        + "veuillez ressayer.");
+                        "Impossible de sauvegarder ce résultat, "
+                                + "veuillez ressayer.");
             }
-            
+
             if (filePath != null) {
                 result = new Result(name, filePath, this.allStats);
                 /* add a new result */
-                this.allResults.add(result);
-                /* serialize to save in file */
-                FilesUtils.serialize(this.allResults);
-                /* set all result */
-                this.allResults.setResults(FilesUtils.deserialize());
-                
-                DialogMessage.confirmMessage("Sauvegarde effectuée !", 
-                        "Données sauvegardées avec succés", 
-                        "Vous pouvez retrouver vos sauvegardes de générations "
-                        + "dans l'onglet 'Mes données'");
+                if (this.allResults.add(result)) {
+
+                    FilesUtils.serialize(this.allResults);
+                    this.allResults.setResults(FilesUtils.deserialize());
+
+                    listViewMyData.getItems().clear();
+
+                    /* Add saved result in list view */
+                    for (int i = 0; i < this.allResults.getResults().size(); i++) {
+                        listViewMyData.getItems().add("Génération : " + i + " : " 
+                                + this.allResults.getResults().get(i).getSaveName());
+                    }
+                    
+                    /* If saved result active list view */
+                    if (listViewMyData.getItems().size() > 0) {
+                        listViewMyData.setDisable(false);
+                    }
+
+                    DialogMessage.confirmMessage("Sauvegarde effectuée !", 
+                            "Données sauvegardées avec succés", 
+                            "Vous pouvez retrouver vos sauvegardes de "
+                                    + "générations dans l'onglet 'Mes sauvegardes'");
+                } else {
+                    DialogMessage.errorMessage("Erreur !", 
+                            "Erreur, nom existant.", 
+                            "Impossible de sauvegarder ce résultat car une "
+                                    + "sauvegarde possède déjà ce nom, "
+                                    + "veuillez ressayer.");
+                }
             }
-            
+
         } else {
             DialogMessage.errorMessage("Erreur !", 
                     "Erreur, nom vide.", 
                     "Impossible de sauvegarder le résultat sans nom, "
-                    + "veuillez ressayer.");
+                            + "veuillez ressayer.");
         }
     }
-    
+
     /**
      * Open result
      * @param event
@@ -338,6 +375,48 @@ public class StatisticsController {
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Delete a result
+     * @param event
+     */
+    @FXML
+    public void deleteResult(ActionEvent event) {
+
+        String toDelete;
+
+        if (CheckFields.isValid(textFieldNameToDelete)) {
+
+            toDelete = textFieldNameToDelete.getText().trim(); 
+
+            if (this.allResults.delete(toDelete)) {
+                FilesUtils.serialize(this.allResults);
+                this.allResults.setResults(FilesUtils.deserialize());
+
+                listViewMyData.getItems().clear();
+
+                /* Add saved result in list view */
+                for (int i = 0; i < this.allResults.getResults().size(); i++) {
+                    listViewMyData.getItems().add("Génération : " + i + " : " 
+                            + this.allResults.getResults().get(i).getSaveName());
+                }
+                
+                /* If saved result active list view */
+                if (listViewMyData.getItems().size() < 1) {
+                    listViewMyData.setDisable(true);
+                }
+
+                DialogMessage.confirmMessage("Succés", 
+                        "Suppression effectuée", 
+                        "La sauvegarde a été effectuée");
+            } else {
+                DialogMessage.errorMessage("Erreur !",
+                        "Impossible de supprimer", 
+                        "Impossible de supprimer l'enregistrement, "
+                                + "veuillez réessayer.");
+            }
         }
     }
 }

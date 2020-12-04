@@ -90,14 +90,14 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Mes données">
+            <Tab text="Mes sauvegardes">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listViewMyData" layoutX="460.0" layoutY="21.0" onMouseClicked="#openResult" prefHeight="600.0" prefWidth="458.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="21.0" />
+                        <ListView fx:id="listViewMyData" disable="true" layoutX="460.0" layoutY="21.0" onMouseClicked="#openResult" prefHeight="600.0" prefWidth="458.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="21.0" />
                         <Label layoutX="150.0" layoutY="74.0" prefHeight="26.0" prefWidth="115.0" text="Supprimer un résultat" />
-                        <TextField layoutX="100.0" layoutY="115.0" prefHeight="38.0" prefWidth="215.0" promptText="Nom du résultat à supprimer" />
-                        <Button layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" styleClass="delete-button" stylesheets="@../assets/css/style.css" text="Supprimer" AnchorPane.topAnchor="193.0" />
+                        <TextField fx:id="textFieldNameToDelete" layoutX="100.0" layoutY="115.0" prefHeight="38.0" prefWidth="215.0" promptText="Nom du résultat à supprimer" />
+                        <Button fx:id="btnDelete" disable="true" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" onAction="#deleteResult" prefHeight="38.0" prefWidth="215.0" styleClass="delete-button" stylesheets="@../assets/css/style.css" text="Supprimer" AnchorPane.topAnchor="193.0" />
                      </children></AnchorPane>
               </content>
             </Tab>

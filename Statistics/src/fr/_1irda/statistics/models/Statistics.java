@@ -61,7 +61,7 @@ public class Statistics {
         for (int i = 0; i < this.nbTest; i++) {
             
             if (this.arraySize < 1) {  
-                size += rand.nextInt(50 - 1) + 1;                
+                size += rand.nextInt(100 - 1) + 1;                
             } else {
                 size = this.arraySize;
             }
