@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="generalAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr._1irda.statistics.controllers.StatisticsController">
+   <children>
+      <TextField fx:id="textFieldArraySize" layoutX="14.0" layoutY="69.0" prefHeight="38.0" prefWidth="215.0" promptText="Valeur entière" />
+      <TextField fx:id="textFieldNbTests" layoutX="14.0" layoutY="143.0" prefHeight="38.0" prefWidth="215.0" promptText="Valeure entière" AnchorPane.topAnchor="143.0" />
+      <Label layoutX="14.0" layoutY="39.0" prefHeight="30.0" prefWidth="215.0" text="Taille des tableaux ( 1 &lt; alors aléatoire ) " />
+      <Label layoutX="14.0" layoutY="113.0" prefHeight="30.0" prefWidth="136.0" text="Nombre de générations" />
+      <Button fx:id="btnGenerate" layoutX="12.0" layoutY="331.0" mnemonicParsing="false" onAction="#clickGenerate" prefHeight="38.0" prefWidth="215.0" text="Générer" />
+      <Separator layoutX="240.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="6.0" />
+      <Label layoutX="14.0" layoutY="189.0" prefHeight="26.0" prefWidth="66.0" text="Algorithmes" />
+      <TabPane fx:id="tabPane" layoutX="243.0" layoutY="-2.0" prefHeight="700.0" prefWidth="958.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Graphique">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="958.0">
+                     <children>
+                        <LineChart fx:id="chart" prefHeight="674.0" prefWidth="962.0" styleClass="default-color0" stylesheets="@../assets/css/style.css" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" visible="false" fx:id="xAxis" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="yAxis" side="LEFT" visible="false" />
+                          </yAxis>
+                        </LineChart>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Détails">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="listViewDetails" layoutX="42.0" layoutY="94.0" onMouseClicked="#openDetails" prefHeight="567.0" prefWidth="878.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="94.0" />
+                        <TextArea fx:id="textAreaResults" editable="false" layoutX="40.0" layoutY="22.0" prefHeight="73.0" prefWidth="878.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Exporter">
+              <content>
+                <AnchorPane fx:id="anchorPaneExport" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="390.0" layoutY="47.0" prefHeight="30.0" prefWidth="179.0" text="Exporter les résultats">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="476.0" layoutY="156.0" orientation="VERTICAL" prefHeight="171.0" prefWidth="6.0" />
+                        <Label layoutX="103.0" layoutY="183.0" prefHeight="30.0" prefWidth="251.0" text="Enregistrer le graphique au format png">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="92.0" prefHeight="26.0" prefWidth="106.0" />
+                        <Button fx:id="btnSaveChart" disable="true" layoutX="121.0" layoutY="233.0" mnemonicParsing="false" onAction="#saveChart" prefHeight="38.0" prefWidth="215.0" text="Enregistrer" />
+                        <Label layoutX="608.0" layoutY="188.0" prefHeight="20.0" prefWidth="275.0" text="Enregistrer les données dans un fichier .csv">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnSaveCsv" disable="true" layoutX="638.0" layoutY="233.0" mnemonicParsing="false" onAction="#saveToCsv" prefHeight="38.0" prefWidth="215.0" text="Enregistrer" />
+                        <Label layoutX="374.0" layoutY="361.0" text="Enregistrer les générations">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnSaveResults" disable="true" layoutX="369.0" layoutY="506.0" mnemonicParsing="false" onAction="#saveResults" prefHeight="38.0" prefWidth="215.0" text="Enregistrer" />
+                        <TextField fx:id="textFieldSaveName" layoutX="369.0" layoutY="443.0" prefHeight="38.0" prefWidth="215.0" />
+                        <Separator layoutX="-3.0" layoutY="325.0" prefHeight="4.0" prefWidth="966.0" />
+                        <Label layoutX="406.0" layoutY="423.0" text="Nom de la sauvegarde">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Mes données">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="listViewMyData" layoutX="460.0" layoutY="21.0" onMouseClicked="#openResult" prefHeight="600.0" prefWidth="458.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="21.0" />
+                        <Label layoutX="150.0" layoutY="74.0" prefHeight="26.0" prefWidth="115.0" text="Supprimer un résultat" />
+                        <TextField layoutX="100.0" layoutY="115.0" prefHeight="38.0" prefWidth="215.0" promptText="Nom du résultat à supprimer" />
+                        <Button layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" styleClass="delete-button" stylesheets="@../assets/css/style.css" text="Supprimer" AnchorPane.topAnchor="193.0" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <ComboBox fx:id="comboBoxAlgo" layoutX="14.0" layoutY="215.0" prefHeight="26.0" prefWidth="215.0" />
+      <ComboBox fx:id="comboBoxGeneration" layoutX="12.0" layoutY="282.0" prefHeight="26.0" prefWidth="215.0" />
+      <Label layoutX="14.0" layoutY="256.0" prefHeight="26.0" prefWidth="136.0" text="Génération des tableaux" />
+      <Separator layoutX="-7.0" layoutY="25.0" prefHeight="4.0" prefWidth="247.0" />
+   </children>
+</AnchorPane>
