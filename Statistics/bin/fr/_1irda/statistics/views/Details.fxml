@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -34,6 +35,16 @@
          </font>
       </Label>
       <Label fx:id="labelSortingAlgo" layoutX="27.0" layoutY="168.0" text="Algorithme de tri : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelInformations" layoutX="27.0" layoutY="300.0" prefHeight="82.0" prefWidth="173.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Separator layoutX="2.0" layoutY="246.0" prefHeight="1.0" prefWidth="371.0" />
+      <Label layoutX="27.0" layoutY="260.0" text="Complexité : ">
          <font>
             <Font size="18.0" />
          </font>

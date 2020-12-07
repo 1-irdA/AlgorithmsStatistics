@@ -49,7 +49,7 @@ public class HomeController extends Application {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Statistiques");
-            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/home.png")));
+            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/images/logo.png")));
             stage.setResizable(false);
             stage.showAndWait();
         } catch (IOException e) {
@@ -78,5 +78,7 @@ public class HomeController extends Application {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     @Override
-    public void start(Stage arg0) throws Exception { }
+    public void start(Stage arg0) throws Exception {
+        /* just to get host services */
+    }
 }

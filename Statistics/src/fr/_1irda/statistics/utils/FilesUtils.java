@@ -89,14 +89,15 @@ public class FilesUtils {
         fileChooser.getExtensionFilters().add(extFilter);
         file = fileChooser.showSaveDialog(fileChooserStage);
 
-        try {
-            writer = new PrintWriter(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
         if (file != null) {
-            writer.println("Génération(s) : " + results.length + ";");
+        	
+        	try {
+                writer = new PrintWriter(file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        	writer.println("Génération(s) : " + results.length + ";");
             writer.println("Taille; Temps de tri (secondes);");
             for (Stat stat : results) {
                 writer.println(stat.getSize() + ";" + stat.getSortingTime() + ";");

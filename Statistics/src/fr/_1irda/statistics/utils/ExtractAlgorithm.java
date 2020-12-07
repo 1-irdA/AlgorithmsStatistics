@@ -9,36 +9,29 @@ package fr._1irda.statistics.utils;
  * @author Adrien GARROUSTE
  */
 public class ExtractAlgorithm {
-    
+
     /**
      * Return algorithm name in ArraysAlgorithm class
      * @param toAnalyze no formatted algorithm name
      * @return formatted algorithm name
      */
     public static String getSortingAlgorithm(String toAnalyze) {
-        
+
         String algorithm;
-        
+
         switch (toAnalyze) {
-        case "Tri par insertion":
-            algorithm = "insertionSort";
-            break;
-        case "Tri à bulles":
-            algorithm = "bubbleSort";
-            break;
-        case "Tri à bulles optimisé":
-            algorithm = "optimizedBubbleSort";
-            break;
-        case "Tri au peigne":
-            algorithm = "combSort";
-            break;
-        default:
-            throw new IllegalArgumentException("Unexpected value: " + toAnalyze);
+        case "Tri par insertion" -> algorithm = "insertionSort";
+        case "Tri à bulles" -> algorithm = "bubbleSort";
+        case "Tri à bulles optimisé" -> algorithm = "optimizedBubbleSort";
+        case "Tri à peigne" -> algorithm = "combSort";
+        case "Tri par sélection" -> algorithm = "selectionSort";
+        default -> throw new IllegalArgumentException("Unexpected value: " 
+                + toAnalyze);
         }
-        
+
         return algorithm;
     }
-    
+
     /**
      * Return algorithm name in Generation class
      * @param toAnalyse no formatted algorithm name
@@ -46,18 +39,15 @@ public class ExtractAlgorithm {
      */
     public static String getGenerationAlgorithm(String toAnalyse) {
         String algorithm;
-        
+
         switch (toAnalyse) {
-        case "Aléatoire": 
-            algorithm = "randomGeneration";
-            break;
-        case "Descendante":
-            algorithm = "descendingGeneration";
-            break;
-        default:
-            throw new IllegalArgumentException("Unexpected value: " + toAnalyse);
+        case "Aléatoire" -> algorithm = "randomGeneration";
+        case "Descendante" -> algorithm = "descendingGeneration";
+        case "Ascendante" -> algorithm = "ascendingGeneration";
+        default -> throw new IllegalArgumentException("Unexpected value: " 
+                + toAnalyse);
         }
-        
+
         return algorithm;
     }
 }

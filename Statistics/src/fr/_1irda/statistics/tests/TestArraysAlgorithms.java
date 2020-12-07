@@ -20,13 +20,13 @@ public class TestArraysAlgorithms {
 
     /** Number of arrays generations */
     private static final int NUMBER_OF_GENERATIONS = 20;
-    
+
     /** Array min size */
     private static final int ARRAY_MIN_SIZE = 1;
 
     /** Array max size */
     private static final int ARRAY_MAX_SIZE = 10000;
-    
+
     /**
      * Shared image by different methods of tests
      */
@@ -48,7 +48,7 @@ public class TestArraysAlgorithms {
      * Test ascending insertion sort
      */
     public void testInsertionSort() {
-        
+
         List<double[]> fixtureInsertionSort = List.of(
                 new double[0],
                 new double[] { 10.0 },
@@ -62,9 +62,9 @@ public class TestArraysAlgorithms {
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 },
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 }
                 );
-        
+
         System.out.print("Test insertion sort : ");
-        
+
         for (int numTest = 0; numTest < fixtureInsertionSort.size(); numTest++) {
             ArraysAlgorithms.insertionSort(fixture.get(numTest));
             AssertionTests.assertionArraysEquals(fixtureInsertionSort.get(numTest), 
@@ -73,7 +73,7 @@ public class TestArraysAlgorithms {
                             + " fixture number : " 
                             + numTest + "\n");
         }
-        
+
         System.out.println("All test passed");
     }
 
@@ -81,7 +81,7 @@ public class TestArraysAlgorithms {
      * Test ascending bubble sort
      */
     public void testBubbleSort() {
-        
+
         List<double[]> fixtureBubbleSort = List.of(
                 new double[0],
                 new double[] { 10.0 },
@@ -95,9 +95,9 @@ public class TestArraysAlgorithms {
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 },
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 }
                 );
-        
+
         System.out.print("Test bubble sort : ");
-        
+
         for (int numTest = 0; numTest < fixtureBubbleSort.size(); numTest++) {
             ArraysAlgorithms.insertionSort(fixture.get(numTest));
             AssertionTests.assertionArraysEquals(fixtureBubbleSort.get(numTest), 
@@ -106,7 +106,7 @@ public class TestArraysAlgorithms {
                             + " fixture number : " 
                             + numTest + "\n");
         }
-        
+
         System.out.println("All test passed");
     }
 
@@ -114,7 +114,7 @@ public class TestArraysAlgorithms {
      * Test optimized bubble sort
      */
     public void testOptimizedBubbleSort() {
-        
+
         List<double[]> fixtureOptimizedBubbleSort = List.of(
                 new double[0],
                 new double[] { 10.0 },
@@ -128,9 +128,9 @@ public class TestArraysAlgorithms {
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 },
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 }
                 );
-        
+
         System.out.print("Test optimized bubble sort : ");
-        
+
         for (int numTest = 0; numTest < fixtureOptimizedBubbleSort.size(); numTest++) {
             ArraysAlgorithms.optimizedBubbleSort(fixture.get(numTest));
             AssertionTests.assertionArraysEquals(fixtureOptimizedBubbleSort.get(numTest), 
@@ -139,7 +139,7 @@ public class TestArraysAlgorithms {
                             + " fixture number : " 
                             + numTest + "\n");
         }
-        
+
         System.out.println("All test passed");
     }
 
@@ -147,7 +147,7 @@ public class TestArraysAlgorithms {
      * Test ascending comb sort
      */
     public void testCombSort() {
-        
+
         List<double[]> fixtureCombSort = List.of(
                 new double[0],
                 new double[] { 10.0 },
@@ -161,18 +161,114 @@ public class TestArraysAlgorithms {
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 },
                 new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 }
                 );
-        
+
         System.out.print("Test comb sort : ");
-        
+
         for (int numTest = 0; numTest < fixtureCombSort.size(); numTest++) {
             ArraysAlgorithms.optimizedBubbleSort(fixture.get(numTest));
             AssertionTests.assertionArraysEquals(fixtureCombSort.get(numTest), 
                     fixture.get(numTest), 
-                    "Fail optimized bubble sort"
+                    "Fail comb sort"
                             + " fixture number : " 
                             + numTest + "\n");
         }
-        
+
+        System.out.println("All test passed");
+    }
+
+    /**
+     * Test selection sort
+     */
+    public void testSelectionSort() {
+        List<double[]> fixtureSelectionSort = List.of(
+                new double[0],
+                new double[] { 10.0 },
+                new double[] { Double.MAX_VALUE },
+                new double[] { -1.0, 10.0 },
+                new double[] { 1.0, 2.0, 5.0, 7.0 },
+                new double[] { -1.0, -1.0, Double.MAX_VALUE, Double.MAX_VALUE },
+                new double[] { 10.0, 345.0, 345.0, Double.MAX_VALUE, Double.MAX_VALUE },
+                new double[] { -10.0, -5.0, 0.0, 2.0, 6.0, 100.0 },
+                new double[] { -890.0, -5.0, -2.0, 0.0, 1.0, 10.0, 52.0, 65.0, 756.0 },
+                new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 },
+                new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 }
+                );
+
+        System.out.print("Test selection sort : ");
+
+        for (int numTest = 0; numTest < fixtureSelectionSort.size(); numTest++) {
+            ArraysAlgorithms.selectionSort(fixture.get(numTest));
+            AssertionTests.assertionArraysEquals(fixtureSelectionSort.get(numTest), 
+                    fixture.get(numTest), 
+                    "Fail selection sort"
+                            + " fixture number : " 
+                            + numTest + "\n");
+        }
+
+        System.out.println("All test passed");
+    }
+
+    /**
+     * Test quick sort
+     */
+    public void testQuickSort() {
+        List<double[]> fixtureQuickSort = List.of(
+                new double[0],
+                new double[] { 10.0 },
+                new double[] { Double.MAX_VALUE },
+                new double[] { -1.0, 10.0 },
+                new double[] { 1.0, 2.0, 5.0, 7.0 },
+                new double[] { -1.0, -1.0, Double.MAX_VALUE, Double.MAX_VALUE },
+                new double[] { 10.0, 345.0, 345.0, Double.MAX_VALUE, Double.MAX_VALUE },
+                new double[] { -10.0, -5.0, 0.0, 2.0, 6.0, 100.0 },
+                new double[] { -890.0, -5.0, -2.0, 0.0, 1.0, 10.0, 52.0, 65.0, 756.0 },
+                new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 },
+                new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 }
+                );
+
+        System.out.print("Test quick sort : ");
+
+        for (int numTest = 0; numTest < fixtureQuickSort.size(); numTest++) {
+            ArraysAlgorithms.quickSort(fixture.get(numTest));
+            AssertionTests.assertionArraysEquals(fixtureQuickSort.get(numTest), 
+                    fixture.get(numTest), 
+                    "Fail quick sort"
+                            + " fixture number : " 
+                            + numTest + "\n");
+        }
+
+        System.out.println("All test passed");
+    }
+
+    /**
+     * Test merge sort
+     */
+    public void testMergeSort() {
+        List<double[]> fixtureMergeSort = List.of(
+                new double[0],
+                new double[] { 10.0 },
+                new double[] { Double.MAX_VALUE },
+                new double[] { -1.0, 10.0 },
+                new double[] { 1.0, 2.0, 5.0, 7.0 },
+                new double[] { -1.0, -1.0, Double.MAX_VALUE, Double.MAX_VALUE },
+                new double[] { 10.0, 345.0, 345.0, Double.MAX_VALUE, Double.MAX_VALUE },
+                new double[] { -10.0, -5.0, 0.0, 2.0, 6.0, 100.0 },
+                new double[] { -890.0, -5.0, -2.0, 0.0, 1.0, 10.0, 52.0, 65.0, 756.0 },
+                new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 },
+                new double[] { -10.0, -7.0, 4.0, 5.0, 9.0, 45.0, 51.0, 51.0, 68.0, 87.0 }
+                );
+
+        System.out.print("Test merge sort : ");
+
+        for (int numTest = 0; numTest < fixtureMergeSort.size(); numTest++) {
+            ArraysAlgorithms.mergeSort(fixture.get(numTest));
+            AssertionTests.assertionArraysEquals(fixtureMergeSort.get(numTest), 
+                    fixture.get(numTest), 
+                    "Fail merge sort"
+                            + " fixture number : " 
+                            + numTest + "\n");
+        }
+
         System.out.println("All test passed");
     }
 
@@ -185,7 +281,7 @@ public class TestArraysAlgorithms {
         double[] generated;
         Random random = new Random();
         int size;
-        
+
         System.out.print("Test descending order : ");
 
         for (int i = 0; i < NUMBER_OF_GENERATIONS; i++) {
@@ -195,7 +291,30 @@ public class TestArraysAlgorithms {
             AssertionTests.assertionArrayDescendingOrder(generated, 
                     "Fail generated ascending order number : " + i);
         }
-        
+
+        System.out.println("All test passed");
+    }
+    
+    /**
+     * Test ascending generation
+     */
+    @SuppressWarnings("static-method")
+    public void testAscendingGeneration() {
+
+        double[] generated;
+        Random random = new Random();
+        int size;
+
+        System.out.print("Test ascending order : ");
+
+        for (int i = 0; i < NUMBER_OF_GENERATIONS; i++) {
+            size = random.nextInt(ARRAY_MAX_SIZE - ARRAY_MIN_SIZE) + ARRAY_MIN_SIZE;
+            generated = Generation.ascendingGeneration(size);
+
+            AssertionTests.assertionArrayAscendingOrder(generated, 
+                    "Fail generated ascending order number : " + i);
+        }
+
         System.out.println("All test passed");
     }
 }

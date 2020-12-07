@@ -133,19 +133,21 @@ public class StatisticsController {
 
         /* Add saved result in list view */
         for (int i = 0; i < res.size(); i++) {
-            listViewMyData.getItems().add(i + " : " + res.get(i).getSaveName());
+            listViewMyData.getItems().add(res.get(i).getSaveName());
         }
 
         /* Add sorting algorithms */
         comboBoxAlgo.getItems().addAll("Tri par insertion",
                 "Tri à bulles",
                 "Tri à bulles optimisé",
-                "Tri au peigne");
-
+                "Tri à peigne",
+                "Tri par sélection");
         comboBoxAlgo.getSelectionModel().select(0);
 
         /* Add generation algorithm */
-        comboBoxGeneration.getItems().addAll("Aléatoire", "Descendante");
+        comboBoxGeneration.getItems().addAll("Aléatoire", 
+                "Descendante",
+                "Ascendante");
         comboBoxGeneration.getSelectionModel().select(0);
 
         /* If saved result, activate button */
@@ -241,7 +243,7 @@ public class StatisticsController {
             controller.initialize(this.allStats[clickedIndex]);
             stage.setScene(new Scene(root));
             stage.setTitle("Détails");
-            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/home.png")));
+            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/images/logo.png")));
             stage.setResizable(false);
             stage.showAndWait();
         } catch (IOException e) {
@@ -322,8 +324,7 @@ public class StatisticsController {
 
                     /* Add saved result in list view */
                     for (int i = 0; i < this.allResults.getResults().size(); i++) {
-                        listViewMyData.getItems().add(i + " : " 
-                                + this.allResults.getResults().get(i).getSaveName());
+                        listViewMyData.getItems().add(this.allResults.getResults().get(i).getSaveName());
                     }
                     
                     /* If saved result active list view */
@@ -372,7 +373,7 @@ public class StatisticsController {
             controller.initialize(this.allResults.getResults().get(clickedIndex));
             stage.setScene(new Scene(root));
             stage.setTitle("Résultat numéro : " + clickedIndex);
-            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/home.png")));
+            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/images/logo.png")));
             stage.setResizable(false);
             stage.showAndWait();
         } catch (IOException e) {

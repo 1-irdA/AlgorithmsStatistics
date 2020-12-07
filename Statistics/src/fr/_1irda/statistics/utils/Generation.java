@@ -15,7 +15,7 @@ import java.util.Random;
 public class Generation {
 
     /** Max value in array */
-    private static final double MAX_VALUE = 9999999.99;
+    private static final double MAX_VALUE = 999999.99;
 
     /** Max space between number in descending generation */
     private static final int SPACING = 25000;
@@ -36,6 +36,27 @@ public class Generation {
         for (int i = 0; i < size; i++) {
             generated[i] = randomNumber;
             randomNumber -= random.nextDouble() * SPACING;
+        }
+
+        return generated;
+    }
+    
+    /**
+     * Generate an array in ascending order
+     * @param size of array to generate
+     * @return a generated array with ascending values
+     */
+    public static double[] ascendingGeneration(int size) {
+        
+        Random random = new Random();
+        double randomNumber;
+        double[] generated = new double[size];
+
+        randomNumber = random.nextDouble() * MAX_VALUE;
+
+        for (int i = 0; i < size; i++) {
+            generated[i] = randomNumber;
+            randomNumber += random.nextDouble() * SPACING;
         }
 
         return generated;

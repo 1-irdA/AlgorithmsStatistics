@@ -31,7 +31,7 @@ public class ArraysAlgorithms {
             System.arraycopy(toSort, place, toSort, place + 1, step - place);
             toSort[place] = toInsert;
         }
-        
+
         return toSort;
     }
 
@@ -53,39 +53,39 @@ public class ArraysAlgorithms {
                 }
             }
         }
-        
+
         return toSort;
     }
-    
+
     /**
      * Optimized bubble sort
      * @param toSort array to sort
      * @return a sorted array
      */
     public static double[] optimizedBubbleSort(double[] toSort) {
-       
-       boolean isSorted, notFinish = true;    
-       double temp;
-             
-       for (int i = toSort.length - 1; i > 0 && notFinish; i--) {
-           isSorted = true;
-           for (int j = 0; j < i; j++) {
-               if (toSort[j + 1] < toSort[j]) {
-                   temp = toSort[j + 1];
-                   toSort[j + 1] = toSort[j];
-                   toSort[j] = temp;
-                   isSorted = false;
-               }
-           }
-           
-           if (isSorted) {
-               notFinish = false;
-           }
-       }
-       
-       return toSort;
+
+        boolean isSorted, notFinish = true;    
+        double temp;
+
+        for (int i = toSort.length - 1; i > 0 && notFinish; i--) {
+            isSorted = true;
+            for (int j = 0; j < i; j++) {
+                if (toSort[j + 1] < toSort[j]) {
+                    temp = toSort[j + 1];
+                    toSort[j + 1] = toSort[j];
+                    toSort[j] = temp;
+                    isSorted = false;
+                }
+            }
+
+            if (isSorted) {
+                notFinish = false;
+            }
+        }
+
+        return toSort;
     }
-    
+
     /**
      * Sort an array in ascending order
      * @param toSort array to sort
@@ -97,17 +97,17 @@ public class ArraysAlgorithms {
         boolean isSwap = true;
         int size = inter, i;
         double temp;
-        
+
         while (inter > 1 || isSwap) {
             inter = (int) (inter / 1.3);
-            
+
             if (inter < 1) {
                 inter = 1;
             }
-            
+
             i = 0;
             isSwap = false;
-            
+
             while (i < size - inter) {
                 if (toSort[i] > toSort[i + inter]) {
                     temp = toSort[i + inter];
@@ -118,7 +118,55 @@ public class ArraysAlgorithms {
                 i++;
             }
         }
-        
+
         return toSort;
+    }
+
+    /**
+     * Selection sort algorithm
+     * @param toSort array to sort
+     * @return a sorted array in ascending order
+     */
+    public static double[] selectionSort(double[] toSort) {
+
+        int min;
+        double temp;
+
+        for (int i = 0; i < toSort.length - 1; i++) {
+
+            min = i;       
+
+            for (int j  = i + 1; j < toSort.length; j++) {
+                if (toSort[j] < toSort[min]) {
+                    min = j;
+                }
+            }
+
+            if (min != i) {
+                temp = toSort[i];
+                toSort[i] = toSort[min];
+                toSort[min] = temp;
+            }
+        }
+
+        return toSort;
+    }
+
+    /**
+     * Quick sort algorithm
+     * @param toSort array to sort
+     * @return a sorted array in ascending order
+     */
+    public static double[] quickSort(double[] toSort) {
+        return null;
+    }
+
+    /**
+     * Merge sort algorithm
+     * @param toSort array to sort
+     * @return a sorted array in ascending order
+     */
+    public static double[] mergeSort(double[] toSort) {
+        return null;
     }
 }

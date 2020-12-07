@@ -19,13 +19,17 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     
-    public void start(Stage primaryStage) throws Exception {  
+    /**
+     * Build scene
+     */
+    @Override
+    public void start(Stage primaryStage) {  
         try {
             Parent root = FXMLLoader.load(getClass().getResource("views/Home.fxml"));
             Scene scene = new Scene(root);
         
             primaryStage.setTitle("Statistiques");
-            primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("assets/home.png")));
+            primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("assets/images/logo.png")));
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();

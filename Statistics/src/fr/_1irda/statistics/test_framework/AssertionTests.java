@@ -49,4 +49,17 @@ public class AssertionTests {
             }
         }
     }
+    
+    /**
+     * Test if a dynamic array is in ascending order
+     * @param toTest array to analyze
+     * @param message explain error
+     */
+    public static void assertionArrayAscendingOrder(double[] toTest, String message) {
+        for (int i = 0; i < toTest.length - 1; i++) {
+            if (toTest[i] > toTest[i + 1]) {
+                fail(message);
+            }
+        }
+    }
 }

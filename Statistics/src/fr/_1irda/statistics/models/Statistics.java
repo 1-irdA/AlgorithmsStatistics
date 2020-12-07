@@ -65,7 +65,7 @@ public class Statistics {
             } else {
                 size = this.arraySize;
             }
-
+            
             this.stats[i] = new Stat(this.sortAlgorithm, this.generationAlgorithm, size);
             this.stats[i].compute();
             this.totalSortingTime += this.stats[i].getSortingTime();

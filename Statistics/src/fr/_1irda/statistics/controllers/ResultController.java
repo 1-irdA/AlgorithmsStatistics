@@ -65,7 +65,7 @@ public class ResultController {
       
         for (Stat stat : this.stats) {
             listViewArray.getItems().add("Taille : " + stat.getSize()
-            + " - Temps de tri : " + stat.getSortingTime());
+            + " - Temps de tri : " + stat.getSortingTime() + " secondes");
             totalTime += stat.getSortingTime();
         }
         
@@ -93,7 +93,7 @@ public class ResultController {
             controller.initialize(this.stats[clickedIndex]);
             stage.setScene(new Scene(root));
             stage.setTitle("Détails");
-            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/home.png")));
+            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/images/logo.png")));
             stage.setResizable(false);
             stage.showAndWait();
         } catch (IOException e) {
