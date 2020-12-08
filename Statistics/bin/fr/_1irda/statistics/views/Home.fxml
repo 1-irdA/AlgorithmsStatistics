@@ -43,6 +43,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="179.0" layoutY="375.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="215.0" text="Aide" />
+      <Button fx:id="btnAbout" layoutX="179.0" layoutY="375.0" mnemonicParsing="false" onAction="#clickWindowAbout" prefHeight="50.0" prefWidth="215.0" text="À propos" />
    </children>
 </AnchorPane>

@@ -27,6 +27,10 @@ public class HomeController extends Application {
     @FXML
     private Button btnWindowStats;
     
+    /** Button to open about page */
+    @FXML
+    private Button btnAbout;
+    
     /** GitHub link */
     @FXML
     private Hyperlink gitHubLink;
@@ -49,6 +53,27 @@ public class HomeController extends Application {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Statistiques");
+            stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/images/logo.png")));
+            stage.setResizable(false);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * About window
+     * @param event button click
+     */
+    public void clickWindowAbout(ActionEvent event) {
+        
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/About.fxml"));
+        
+        try {
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("À propos");
             stage.getIcons().add(new Image(HomeController.class.getResourceAsStream("../assets/images/logo.png")));
             stage.setResizable(false);
             stage.showAndWait();

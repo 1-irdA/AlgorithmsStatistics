@@ -39,7 +39,7 @@ import javafx.stage.Stage;
  * @author Adrien GARROUSTE
  */
 public class StatisticsController {
-
+    
     /** TextField to choose number of test*/
     @FXML
     private TextField textFieldArraySize;
