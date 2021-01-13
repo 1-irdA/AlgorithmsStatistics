@@ -6,35 +6,35 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr._1irda.statistics.controllers.DetailsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr._1irda.statistics.controllers.DetailsController">
    <children>
-      <Label layoutX="317.0" layoutY="23.0" text="Détails" textFill="#41ac07">
+      <Label layoutX="367.0" layoutY="14.0" text="Détails" textFill="#41ac07">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="labelSortingTime" layoutX="27.0" layoutY="206.0" text="Temps de tri : ">
+      <Label fx:id="labelSortingTime" layoutX="16.0" layoutY="207.0" text="Temps de tri : " AnchorPane.leftAnchor="20.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelSize" layoutX="28.0" layoutY="94.0" text="Taille : " AnchorPane.bottomAnchor="479.0" AnchorPane.topAnchor="94.0">
+      <Label fx:id="labelSize" layoutX="20.0" layoutY="94.0" text="Taille : " AnchorPane.bottomAnchor="479.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="94.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelGeneration" layoutX="28.0" layoutY="130.0" text="Génération :">
+      <Label fx:id="labelGeneration" layoutX="24.0" layoutY="131.0" text="Génération :" AnchorPane.leftAnchor="20.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="listViewElements" layoutX="374.0" layoutY="130.0" prefHeight="449.0" prefWidth="303.0" />
-      <Label layoutX="490.0" layoutY="94.0" text="Éléments">
+      <ListView fx:id="listViewElements" layoutX="483.0" layoutY="130.0" prefHeight="449.0" prefWidth="303.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Label layoutX="593.0" layoutY="94.0" text="Éléments">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelSortingAlgo" layoutX="27.0" layoutY="168.0" text="Algorithme de tri : ">
+      <Label fx:id="labelSortingAlgo" layoutX="20.0" layoutY="168.0" text="Algorithme de tri : " AnchorPane.leftAnchor="20.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -43,8 +43,8 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Separator layoutX="2.0" layoutY="246.0" prefHeight="1.0" prefWidth="371.0" />
-      <Label layoutX="27.0" layoutY="260.0" text="Complexité : ">
+      <Separator layoutX="2.0" layoutY="245.0" prefHeight="4.0" prefWidth="475.0" />
+      <Label layoutX="27.0" layoutY="260.0" text="Complexité : " AnchorPane.leftAnchor="20.0">
          <font>
             <Font size="18.0" />
          </font>

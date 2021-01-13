@@ -4,12 +4,16 @@
  */
 package fr._1irda.statistics.algorithms;
 
+import java.util.Arrays;
+
 /**
  * Class with several sorting algorithms on arrays :
  * - insertion sort
  * - bubble sort
  * - optimized bubble sort
  * - comb sort
+ * - selection sort
+ * - java quick sort
  * @author Adrien GARROUSTE
  */
 public class ArraysAlgorithms {
@@ -150,6 +154,14 @@ public class ArraysAlgorithms {
         }
 
         return toSort;
+    }
+   
+    /**
+     * Sort an array with java implemented quick sort  
+     * @param toSort array to sort
+     */
+    public static void javaQuickSort(double[] toSort) {
+        Arrays.sort(toSort);
     }
 
     /**

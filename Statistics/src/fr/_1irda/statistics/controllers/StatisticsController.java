@@ -39,7 +39,7 @@ import javafx.stage.Stage;
  * @author Adrien GARROUSTE
  */
 public class StatisticsController {
-    
+
     /** TextField to choose number of test*/
     @FXML
     private TextField textFieldArraySize;
@@ -141,7 +141,8 @@ public class StatisticsController {
                 "Tri à bulles",
                 "Tri à bulles optimisé",
                 "Tri à peigne",
-                "Tri par sélection");
+                "Tri par sélection",
+                "Tri rapide implémenté dans Java");
         comboBoxAlgo.getSelectionModel().select(0);
 
         /* Add generation algorithm */
@@ -221,7 +222,8 @@ public class StatisticsController {
                     "Une erreur de saisie a été détectée.\n"
                             + "La taille du tableau doit être une valeur entière.\n"
                             + "Le nombre de test doit être une valeur entière"
-                            + " supérieure à 1");
+                            + " supérieure à 1.\n"
+                            + "Maximum 2500 générations.");
         }
     }
 
@@ -326,12 +328,12 @@ public class StatisticsController {
                     for (int i = 0; i < this.allResults.getResults().size(); i++) {
                         listViewMyData.getItems().add(this.allResults.getResults().get(i).getSaveName());
                     }
-                    
+
                     /* If saved result active list view */
                     if (listViewMyData.getItems().size() > 0) {
                         listViewMyData.setDisable(false);
                     }
-                    
+
                     textFieldSaveName.clear();
 
                     DialogMessage.confirmMessage("Sauvegarde effectuée !", 
@@ -405,12 +407,12 @@ public class StatisticsController {
                     listViewMyData.getItems().add("Génération : " + i + " : " 
                             + this.allResults.getResults().get(i).getSaveName());
                 }
-                
+
                 /* If saved result active list view */
                 if (listViewMyData.getItems().size() < 1) {
                     listViewMyData.setDisable(true);
                 }
-                
+
                 textFieldNameToDelete.clear();
 
                 DialogMessage.confirmMessage("Succés", 
@@ -425,4 +427,3 @@ public class StatisticsController {
         }
     }
 }
-

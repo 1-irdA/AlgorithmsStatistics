@@ -4,22 +4,20 @@
  */
 package fr._1irda.statistics.models;
 
-import java.util.Random;
-
 /**
  * Launch statistics with selected algorithms 
  * with descending and random generation
  * @author Adrien GARROUSTE
  */
 public class Statistics {
-
-    /** Temporary array max size */
-    private static final int TEMP_SIZE = 4;
+    
+    /** Spacing between size */
+    private static final int SPACING = 50;
 
     /** Total time of statistics */
     private double totalSortingTime;
 
-    /** Number of stats to make */
+    /** Number of statistic to make */
     private int nbTest;
 
     /** Size of arrays ot sort */
@@ -55,13 +53,12 @@ public class Statistics {
      */
     public void launch() {
 
-        Random rand = new Random();
-        int size = TEMP_SIZE;
+        int size = SPACING;
 
         for (int i = 0; i < this.nbTest; i++) {
             
             if (this.arraySize < 1) {  
-                size += rand.nextInt(75 - 1) + 1;                
+                size += SPACING;       
             } else {
                 size = this.arraySize;
             }
@@ -76,13 +73,13 @@ public class Statistics {
      * @return the statistics
      */
     public Stat[] getStats() {
-        return stats;
+        return this.stats;
     }
 
     /**
      * @return the totalSortingTime
      */
     public double getTotalSortingTime() {
-        return totalSortingTime;
+        return this.totalSortingTime;
     } 
 }

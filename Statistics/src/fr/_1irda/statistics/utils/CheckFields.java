@@ -11,6 +11,12 @@ import javafx.scene.control.TextField;
  * @author Adrien GARROUSTE
  */
 public class CheckFields {
+    
+    /** Min of arrays generations */
+    private static final int MIN_NB_GENERATIONS = 1;
+    
+    /** Max of arrays generations */
+    private static final int MAX_NB_GENERATIONS = 2600;
 
     /**
      * Determine if text field are valid
@@ -32,8 +38,8 @@ public class CheckFields {
                 nbTest = Integer.parseInt(textFieldNbTests.getText().trim());
 
                 if (arraySize > Integer.MAX_VALUE 
-                        || nbTest < 1 
-                        || nbTest > Integer.MAX_VALUE) {
+                        || nbTest < MIN_NB_GENERATIONS
+                        || nbTest > MAX_NB_GENERATIONS) {
                     isValid = false;
                 }
 

@@ -6,7 +6,7 @@
 package fr._1irda.statistics.test_framework;
 
 /**
- * TODO comment class responsibility
+ * Class when class fail
  * @author Adrien GARROUSTE
  */
 @SuppressWarnings("serial")

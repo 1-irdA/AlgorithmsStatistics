@@ -25,6 +25,7 @@ public class ExtractAlgorithm {
         case "Tri à bulles optimisé" -> algorithm = "optimizedBubbleSort";
         case "Tri à peigne" -> algorithm = "combSort";
         case "Tri par sélection" -> algorithm = "selectionSort";
+        case "Tri rapide implémenté dans Java" -> algorithm = "javaQuickSort";
         default -> throw new IllegalArgumentException("Unexpected value: " 
                 + toAnalyze);
         }

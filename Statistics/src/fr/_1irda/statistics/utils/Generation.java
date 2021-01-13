@@ -9,6 +9,7 @@ import java.util.Random;
 /**
  * Class to generate array in :
  * - descending order
+ * - ascending order
  * - random order
  * @author Adrien GARROUSTE
  */
@@ -18,7 +19,7 @@ public class Generation {
     private static final double MAX_VALUE = 999999.99;
 
     /** Max space between number in descending generation */
-    private static final int SPACING = 25000;
+    private static final int SPACING = 2500;
 
     /**
      * Generate an array in descending order
@@ -73,8 +74,8 @@ public class Generation {
         double[] generated = new double[size];       
 
         for (int i = 0; i < size; i++) {
-            generated[i] = random.nextDouble() * MAX_VALUE
-                    - random.nextDouble() * MAX_VALUE;
+            generated[i] = (random.nextDouble() - random.nextDouble()) 
+                    * MAX_VALUE;
         }
 
         return generated;

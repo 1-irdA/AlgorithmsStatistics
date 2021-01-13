@@ -17,13 +17,12 @@
 
 <AnchorPane fx:id="generalAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr._1irda.statistics.controllers.StatisticsController">
    <children>
-      <TextField fx:id="textFieldArraySize" layoutX="14.0" layoutY="69.0" prefHeight="38.0" prefWidth="215.0" promptText="Valeur entière" />
-      <TextField fx:id="textFieldNbTests" layoutX="14.0" layoutY="143.0" prefHeight="38.0" prefWidth="215.0" promptText="Valeure entière" AnchorPane.topAnchor="143.0" />
-      <Label layoutX="14.0" layoutY="39.0" prefHeight="30.0" prefWidth="215.0" text="Taille des tableaux ( 1 &lt; alors aléatoire ) " />
-      <Label layoutX="14.0" layoutY="113.0" prefHeight="30.0" prefWidth="136.0" text="Nombre de générations" />
-      <Button fx:id="btnGenerate" layoutX="12.0" layoutY="331.0" mnemonicParsing="false" onAction="#clickGenerate" prefHeight="38.0" prefWidth="215.0" text="Générer" />
+      <TextField fx:id="textFieldArraySize" layoutX="7.0" layoutY="94.0" prefHeight="38.0" prefWidth="215.0" promptText="Valeur entière" AnchorPane.leftAnchor="10.0" />
+      <TextField fx:id="textFieldNbTests" layoutX="14.0" layoutY="177.0" prefHeight="38.0" prefWidth="215.0" promptText="Valeure entière" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="177.0" />
+      <Label layoutX="14.0" layoutY="147.0" prefHeight="30.0" prefWidth="215.0" text="Nombre de générations (max : 2600)" AnchorPane.leftAnchor="10.0" />
+      <Button fx:id="btnGenerate" layoutX="14.0" layoutY="385.0" mnemonicParsing="false" onAction="#clickGenerate" prefHeight="38.0" prefWidth="215.0" text="Générer" AnchorPane.leftAnchor="10.0" />
       <Separator layoutX="240.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="6.0" />
-      <Label layoutX="14.0" layoutY="189.0" prefHeight="26.0" prefWidth="66.0" text="Algorithmes" />
+      <Label layoutX="14.0" layoutY="230.0" prefHeight="26.0" prefWidth="66.0" text="Algorithmes" AnchorPane.leftAnchor="10.0" />
       <TabPane fx:id="tabPane" layoutX="243.0" layoutY="-2.0" prefHeight="700.0" prefWidth="958.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Graphique">
@@ -98,14 +97,21 @@
                         <Label layoutX="150.0" layoutY="74.0" prefHeight="26.0" prefWidth="115.0" text="Supprimer un résultat" />
                         <TextField fx:id="textFieldNameToDelete" layoutX="100.0" layoutY="115.0" prefHeight="38.0" prefWidth="215.0" promptText="Nom du résultat à supprimer" />
                         <Button fx:id="btnDelete" disable="true" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" onAction="#deleteResult" prefHeight="38.0" prefWidth="215.0" styleClass="delete-button" stylesheets="@../assets/css/style.css" text="Supprimer" AnchorPane.topAnchor="193.0" />
-                     </children></AnchorPane>
+                     </children>
+                 </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Comparer les résultats">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
         </tabs>
       </TabPane>
-      <ComboBox fx:id="comboBoxAlgo" layoutX="14.0" layoutY="215.0" prefHeight="26.0" prefWidth="215.0" />
-      <ComboBox fx:id="comboBoxGeneration" layoutX="12.0" layoutY="282.0" prefHeight="26.0" prefWidth="215.0" />
-      <Label layoutX="14.0" layoutY="256.0" prefHeight="26.0" prefWidth="136.0" text="Génération des tableaux" />
+      <ComboBox fx:id="comboBoxAlgo" layoutX="14.0" layoutY="256.0" prefHeight="26.0" prefWidth="215.0" AnchorPane.leftAnchor="10.0" />
+      <ComboBox fx:id="comboBoxGeneration" layoutX="14.0" layoutY="327.0" prefHeight="26.0" prefWidth="215.0" AnchorPane.leftAnchor="10.0" />
+      <Label layoutX="17.0" layoutY="301.0" prefHeight="26.0" prefWidth="136.0" text="Génération des tableaux" AnchorPane.leftAnchor="10.0" />
       <Separator layoutX="-7.0" layoutY="25.0" prefHeight="4.0" prefWidth="247.0" />
+      <TextArea editable="false" layoutX="17.0" layoutY="25.0" prefHeight="63.0" prefWidth="209.0" text="Valeur entière uniquement&#10;Si inférieur alors taille aléatoire&#10;Taille max : 10000000" AnchorPane.leftAnchor="10.0" />
    </children>
 </AnchorPane>

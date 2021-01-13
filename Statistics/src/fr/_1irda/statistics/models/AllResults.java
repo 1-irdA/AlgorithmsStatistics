@@ -7,7 +7,7 @@ package fr._1irda.statistics.models;
 import java.util.ArrayList;
 
 /**
- * TODO comment class responsibility
+ * Contains all results of tests
  * @author Adrien GARROUSTE
  */
 public class AllResults {
