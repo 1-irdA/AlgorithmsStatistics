@@ -1,4 +1,4 @@
-# AlgorithmsStatistics
+# algorithms-statistics
 Java software to make statistics on sorting algorithms on arrays.  
 Software realised with JavaFX and Scene Builder.  
 
