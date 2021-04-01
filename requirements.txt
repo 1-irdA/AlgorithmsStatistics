@@ -1,3 +1,0 @@
-VM arguments
-
---module-path {path_javafx_lib} --add-modules javafx.controls,javafx.fxml

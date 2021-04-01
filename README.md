@@ -2,7 +2,7 @@
 Java software to make statistics on sorting algorithms on arrays.  
 Software realised with JavaFX and Scene Builder.  
 
-![Alt text](chart.PNG?raw=true "Chart")
+![Alt text](assets/chart.PNG?raw=true "Chart")
 
 ## Features
 • Choose algorithms to sort arrays  
@@ -12,3 +12,8 @@ Software realised with JavaFX and Scene Builder.
 • Save result in file  
 • See result  
 
+## VM arguments
+
+```sh
+--module-path {path_javafx_lib} --add-modules javafx.controls,javafx.fxml
+```
